@@ -15,4 +15,16 @@ dependencyResolutionManagement {
 
 rootProject.name = "MarketApp"
 include ':app'
-include ':auth'
+
+// region Auth
+def authDir = "auth"
+
+include("auth_data")
+project(":auth_data").projectDir = new File(settingsDir, "$authDir/auth_data")
+
+include("auth_domain")
+project(":auth_domain").projectDir = new File(settingsDir, "$authDir/auth_domain")
+
+include("auth_presentation")
+project(":auth_presentation").projectDir = new File(settingsDir, "$authDir/auth_presentation")
+// endregion
