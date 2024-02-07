@@ -9,8 +9,8 @@ import androidx.room.Query
 internal interface UserDao {
 
     @Query("SELECT * FROM UserModel WHERE id = :userModelId")
-    fun getUser(userModelId: Long): UserModel?
+    suspend fun getUser(userModelId: Long): UserModel?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(userModel: UserModel)
+    suspend fun insertUser(userModel: UserModel)
 }

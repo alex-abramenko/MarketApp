@@ -28,3 +28,13 @@ project(":auth_domain").projectDir = new File(settingsDir, "$authDir/auth_domain
 include("auth_presentation")
 project(":auth_presentation").projectDir = new File(settingsDir, "$authDir/auth_presentation")
 // endregion
+
+// region Market
+def marketDir = "market"
+
+include("market_domain")
+project(":market_domain").projectDir = new File(settingsDir, "$marketDir/market_domain")
+
+include("market_common")
+project(":market_common").projectDir = new File(settingsDir, "$marketDir/market_common")
+// endregion
