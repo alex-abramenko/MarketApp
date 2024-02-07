@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="auth_title">Вход</string>
+    <string name="auth_login">Войти</string>
+    <string name="auth_name">Имя</string>
+    <string name="auth_surname">Фамилия</string>
+    <string name="auth_number">Номер телефона</string>
+    <string name="auth_term_of_use">
+        Нажимая кнопку “Войти”, Вы принимаете\n
+        <u>условия программы лояльности</u>
+    </string>
+
+</resources>
