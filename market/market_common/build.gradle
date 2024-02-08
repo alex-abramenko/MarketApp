@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace 'com.alxabr.auth_domain'
+    namespace 'com.alxabr.market_common'
     compileSdk 33
 
     defaultConfig {
