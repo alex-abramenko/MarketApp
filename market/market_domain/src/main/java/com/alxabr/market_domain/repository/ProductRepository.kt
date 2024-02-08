@@ -8,7 +8,7 @@ interface ProductRepository {
     fun getProducts(
         sortType: ProductSortType,
         isOnlyFavorites: Boolean
-    ): Flow<Product>
+    ): Flow<List<Product>>
 
     fun getProduct(productId: String): Flow<Product?>
 
