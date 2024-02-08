@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.onEach
 @AndroidEntryPoint
 internal class AuthFragment : Fragment() {
 
-    private val viewModel: AuthVideModel by viewModels()
+    private val viewModel: AuthViewModel by viewModels()
     private val authFeature: AuthFeatureImpl by activityViewModels()
     private var _binding: AuthFragmentBinding? = null
     private val binding: AuthFragmentBinding
@@ -37,25 +37,59 @@ internal class AuthFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            inputName.setText(viewModel.initName)
-            inputSurname.setText(viewModel.initSurname)
-            inputNumber.setText(viewModel.initNumber)
+            inputName.setText(viewModel.inputNameValue.value)
+            viewModel
+                .inputNameEnabled
+                .onEach(inputName::setEnabled)
+                .launchIn(viewScope)
+            viewModel
+                .inputNameError
+                .onEach {
+                    if (it) {
+                        inputName.error = "Недопустимое значение ошибки"
+                    } else {
+                        inputName.error = null
+                    }
+                }
+                .launchIn(viewScope)
+
+            inputSurname.setText(viewModel.inputSurnameValue.value)
+            viewModel
+                .inputSurnameEnabled
+                .onEach(inputSurname::setEnabled)
+                .launchIn(viewScope)
+            viewModel
+                .inputSurnameError
+                .onEach {
+                    if (it) {
+                        inputSurname.error = "Недопустимое значение ошибки"
+                    } else {
+                        inputSurname.error = null
+                    }
+                }
+                .launchIn(viewScope)
+
+            inputNumber.setText(viewModel.inputNumberValue.value)
+            viewModel
+                .inputNumberEnabled
+                .onEach(inputNumber::setEnabled)
+                .launchIn(viewScope)
+            viewModel
+                .inputNumberError
+                .onEach {
+                    if (it) {
+                        inputNumber.error = "Недопустимое значение ошибки"
+                    } else {
+                        inputNumber.error = null
+                    }
+                }
+                .launchIn(viewScope)
 
             viewModel
-                .loginButtonEnabled
-                .onEach {
-                    btnLogin.isEnabled = it && !viewModel.isLoading.value
-                }
+                .buttonLoginEnabled
+                .onEach(btnLogin::setEnabled)
                 .launchIn(viewScope)
-            viewModel
-                .isLoading
-                .onEach {
-                    inputName.isEnabled = !it
-                    inputSurname.isEnabled = !it
-                    inputNumber.isEnabled = !it
-                    btnLogin.isEnabled = !it && viewModel.loginButtonEnabled.value
-                }
-                .launchIn(viewScope)
+
             viewModel
                 .onAuthSuccess
                 .onEach { authFeature.onAuthSuccess() }
