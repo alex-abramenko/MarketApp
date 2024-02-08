@@ -20,7 +20,7 @@ internal class AuthRepositoryImpl @Inject constructor(
         withContext(dispatcher) {
             var isLogin = false
             try {
-                isLogin = userDao.getUser(userModelId = CURRENT_USER_ID) != null
+                isLogin = userDao.getUser(userEntityId = CURRENT_USER_ID) != null
             } catch (ex: Exception) {
                 AuthLogger.error(ex.stackTraceToString())
             }
@@ -31,7 +31,7 @@ internal class AuthRepositoryImpl @Inject constructor(
         withContext(dispatcher) {
             var isLogin = true
             try {
-                userDao.insertUser(userModel = userMapper(user))
+                userDao.insertUser(userEntity = userMapper(user))
             } catch (ex: Exception) {
                 AuthLogger.error(ex.stackTraceToString())
                 isLogin = false

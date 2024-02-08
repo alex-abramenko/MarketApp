@@ -8,9 +8,9 @@ import androidx.room.Query
 @Dao
 internal interface UserDao {
 
-    @Query("SELECT * FROM UserModel WHERE id = :userModelId")
-    suspend fun getUser(userModelId: Long): UserModel?
+    @Query("SELECT * FROM UserEntity WHERE id = :userEntityId")
+    suspend fun getUser(userEntityId: Long): UserEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUser(userModel: UserModel)
+    suspend fun insertUser(userEntity: UserEntity)
 }

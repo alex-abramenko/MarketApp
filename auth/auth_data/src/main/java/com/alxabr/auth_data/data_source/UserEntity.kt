@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 internal const val CURRENT_USER_ID = 1L
 
 @Entity
-internal class UserModel(
+internal class UserEntity(
     @PrimaryKey val id: Long = CURRENT_USER_ID,
     val name: String,
     val surname: String,
