@@ -13,7 +13,7 @@ class GetProductListUseCase @Inject constructor(
     operator fun invoke(
         sortType: ProductSortType = ProductSortType.BY_POPULAR,
         isOnlyFavorites: Boolean = false
-    ): Flow<Product> =
+    ): Flow<List<Product>> =
         productRepository.getProducts(
             sortType = sortType,
             isOnlyFavorites = isOnlyFavorites
