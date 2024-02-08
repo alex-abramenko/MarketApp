@@ -17,7 +17,7 @@ internal data class ProductEntity(
     val tags: List<String>,
     val available: Long,
     val description: String,
-    val infoList: List<Info>,
+    val info: List<Info>,
     val ingredients: String,
     val isFavorite: Boolean = false
 ) {
@@ -58,6 +58,14 @@ internal data class ProductEntity(
         @TypeConverter
         fun feedbackToType(json: String): Feedback =
             gson.fromJson(json, Feedback::class.java)
+
+        @TypeConverter
+        fun stringsFromType(list: List<String>): String =
+            gson.toJson(list.toTypedArray())
+
+        @TypeConverter
+        fun stringsToType(json: String): List<String> =
+            gson.fromJson(json, Array<String>::class.java).toList()
 
         @TypeConverter
         fun infoFromType(infoList: List<Info>): String =

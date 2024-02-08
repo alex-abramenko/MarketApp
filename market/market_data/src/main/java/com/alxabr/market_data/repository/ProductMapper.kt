@@ -31,7 +31,7 @@ internal class ProductMapper @Inject constructor() {
             tags = productEntity.tags,
             available = productEntity.available,
             description = productEntity.description,
-            infoList = productEntity.infoList.map {
+            infoList = productEntity.info.map {
                 ProductInfo(
                     title = it.title,
                     value = it.value
@@ -59,7 +59,7 @@ internal class ProductMapper @Inject constructor() {
             tags = product.tags,
             available = product.available,
             description = product.description,
-            infoList = product.infoList.map {
+            info = product.infoList.map {
                 ProductEntity.Info(
                     title = it.title,
                     value = it.value
