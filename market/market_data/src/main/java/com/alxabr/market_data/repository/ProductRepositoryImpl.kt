@@ -29,9 +29,13 @@ internal class ProductRepositoryImpl @Inject constructor(
                 productMapper(localData.ifEmpty { remoteData })
             )
             productDao.insertProducts(remoteData)
+            var isFirst = true
             val job = launch {
                 productDao.getProductsFlowable().collect {
-                    send(productMapper(it))
+                    if (!isFirst) {
+                        send(productMapper(it))
+                        isFirst = false
+                    }
                 }
             }
             awaitClose {

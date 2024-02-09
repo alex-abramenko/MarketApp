@@ -20,15 +20,7 @@ internal class RemoteDataSource @Inject constructor(
 
     suspend fun getProducts(): List<ProductEntity> =
         withContext(Dispatchers.IO) {
-/*            val stringBuilder = StringBuilder()
-            val inputStream: InputStream = application.assets.open("mock.json")
-            val bufferBuilder = BufferedReader(InputStreamReader(inputStream, StandardCharsets.UTF_8))
-            var str: String?
-            while (bufferBuilder.readLine().also { str = it } != null) {
-                stringBuilder.append(str)
-            }
-            bufferBuilder.close()
-            gson.fromJson(stringBuilder.toString(), Array<ProductEntity>::class.java).toList()*/
+            class Result(val items: Array<ProductEntity>)
             gson
                 .fromJson(
                     BufferedReader(
@@ -37,8 +29,9 @@ internal class RemoteDataSource @Inject constructor(
                             StandardCharsets.UTF_8
                         )
                     ),
-                    Array<ProductEntity>::class.java
+                    Result::class.java
                 )
+                .items
                 .toList()
                 .validateFavorite()
         }
