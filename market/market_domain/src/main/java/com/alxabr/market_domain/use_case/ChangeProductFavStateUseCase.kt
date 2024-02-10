@@ -4,7 +4,7 @@ import com.alxabr.market_domain.model.Product
 import com.alxabr.market_domain.repository.ProductRepository
 import javax.inject.Inject
 
-class ChangeProductFavState @Inject constructor(
+class ChangeProductFavStateUseCase @Inject constructor(
     private val productRepository: ProductRepository
 ) {
 

@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.alxabr.market_catalog.CatalogViewModel
 import com.alxabr.market_catalog.databinding.CatalogFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,6 +16,7 @@ class CatalogFragment : Fragment() {
     private var _binding: CatalogFragmentBinding? = null
     private val binding: CatalogFragmentBinding
         get() = _binding!!
+    private val viewModel: CatalogViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         CatalogFragmentBinding

@@ -1,12 +1,13 @@
-package com.alxabr.market_product_list.ui
+package com.alxabr.market_product_list.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alxabr.auth_domain.utils.MarketLogger
 import com.alxabr.market_domain.model.Product
 
-internal class ProductAdapter :
-    RecyclerView.Adapter<ProductViewHolder>() {
+internal class ProductAdapter(
+    private val listener: ProductItemListener
+) : RecyclerView.Adapter<ProductViewHolder>() {
 
     private val products: MutableList<Product> = mutableListOf()
 
@@ -17,7 +18,7 @@ internal class ProductAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder =
-        ProductViewHolder.from(parent = parent)
+        ProductViewHolder.from(parent = parent, listener = listener)
 
     override fun getItemCount(): Int =
         products.size

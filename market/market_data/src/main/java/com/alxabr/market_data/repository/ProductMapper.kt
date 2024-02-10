@@ -66,6 +66,7 @@ internal class ProductMapper @Inject constructor() {
                 )
             },
             ingredients = product.ingredients,
-            isFavorite = product.isFavorite
+            isFavorite = product.isFavorite,
+            images = product.images
         )
 }

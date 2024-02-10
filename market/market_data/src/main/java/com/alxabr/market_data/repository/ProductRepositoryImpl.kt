@@ -26,16 +26,18 @@ internal class ProductRepositoryImpl @Inject constructor(
             val localData = productDao.getProducts()
             val remoteData = remoteDataSource.getProducts()
             send(
-                productMapper(localData.ifEmpty { remoteData })
+                productMapper(localData.ifEmpty { remoteData }).applySort(sortType)
             )
             productDao.insertProducts(remoteData)
             var isFirst = true
             val job = launch {
                 productDao.getProductsFlowable().collect {
                     if (!isFirst) {
-                        send(productMapper(it))
-                        isFirst = false
+                        send(
+                            productMapper(it).applySort(sortType)
+                        )
                     }
+                    isFirst = false
                 }
             }
             awaitClose {
@@ -56,4 +58,11 @@ internal class ProductRepositoryImpl @Inject constructor(
             )
         }
     }
+
+    private fun List<Product>.applySort(sortType: ProductSortType): List<Product> =
+        when (sortType) {
+            ProductSortType.BY_POPULAR -> sortedBy { it.feedback.rating }
+            ProductSortType.BY_PRICE_DOWN -> sortedByDescending { it.price.priceWithDiscount }
+            ProductSortType.BY_PRICE_TOP -> sortedBy { it.price.priceWithDiscount }
+        }
 }

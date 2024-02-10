@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="product_favorite_button_size">24dp</dimen>
+    <dimen name="product_oblique_strike_width">1dp</dimen>
+    <dimen name="product_discount_width">34dp</dimen>
+    <dimen name="product_discount_height">18dp</dimen>
+
+</resources>
