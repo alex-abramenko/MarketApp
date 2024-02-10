@@ -40,4 +40,10 @@ project(":market_data").projectDir = new File(settingsDir, "$marketDir/market_da
 
 include("market_common")
 project(":market_common").projectDir = new File(settingsDir, "$marketDir/market_common")
+
+include("market_product_list")
+project(":market_product_list").projectDir = new File(settingsDir, "$marketDir/market_product_list")
+
+include("market_catalog")
+project(":market_catalog").projectDir = new File(settingsDir, "$marketDir/market_catalog")
 // endregion
