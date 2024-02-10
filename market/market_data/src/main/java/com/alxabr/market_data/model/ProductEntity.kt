@@ -19,7 +19,8 @@ internal data class ProductEntity(
     val description: String,
     val info: List<Info>,
     val ingredients: String,
-    val isFavorite: Boolean = false
+    val isFavorite: Boolean = false,
+    val images: List<Int>? = emptyList()
 ) {
 
     data class Price(
@@ -74,6 +75,14 @@ internal data class ProductEntity(
         @TypeConverter
         fun infoToType(json: String): List<Info> =
             gson.fromJson(json, Array<Info>::class.java).toList()
+
+        @TypeConverter
+        fun imagesFromType(images: List<Int>?): String =
+            gson.toJson(images?.toTypedArray())
+
+        @TypeConverter
+        fun imagesToType(json: String): List<Int> =
+            gson.fromJson(json, Array<Int>::class.java).toList()
     }
 }
 

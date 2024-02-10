@@ -15,7 +15,7 @@ internal class ProductMapper @Inject constructor() {
     operator fun invoke(productEntity: ProductEntity): Product =
         Product(
             id = productEntity.id,
-            images = emptyList() /* TODO */,
+            images = productEntity.images!!,
             title = productEntity.title,
             subtitle = productEntity.subtitle,
             price = ProductPrice(
