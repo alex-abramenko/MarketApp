@@ -10,8 +10,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
+import com.alxabr.market_domain.repository.ProductSortType
 import com.alxabr.market_product_list.adapter.ProductAdapter
 import com.alxabr.market_product_list.viewmodel.ProductListViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -20,6 +23,11 @@ class ProductListView  @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : RecyclerView(context, attrs, defStyleAttr) {
+
+    data class Config(
+        val isOnlyFavorites: Boolean = false,
+        val sortType: StateFlow<ProductSortType> = MutableStateFlow(ProductSortType.BY_POPULAR)
+    )
 
     private val itemPadding: Int = resources.getDimensionPixelSize(R.dimen.product_list_item_padding)
     private val itemDecoration: ItemDecoration =
@@ -54,15 +62,19 @@ class ProductListView  @JvmOverloads constructor(
         (itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
     }
 
-    fun configure(fragment: Fragment): ProductListController =
+    fun configure(fragment: Fragment, config: Config): ProductList =
         fragment
             .viewModels<ProductListViewModel>()
             .value
             .apply {
+                onConfigure(config = config)
                 val productAdapter = ProductAdapter(this)
                 adapter = productAdapter
                 products
-                    .onEach(productAdapter::setItems)
+                    .onEach {
+                        productAdapter.setItems(it)
+                        invalidateItemDecorations()
+                    }
                     .launchIn(fragment.viewLifecycleOwner.lifecycleScope)
             }
 }

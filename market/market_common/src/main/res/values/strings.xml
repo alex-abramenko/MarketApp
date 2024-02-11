@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="product_sort_by_popular">По популярности</string>
+    <string name="product_sort_by_price_down">По уменьшению цены</string>
+    <string name="product_sort_by_price_up">По возрастанию цены</string>
+</resources>

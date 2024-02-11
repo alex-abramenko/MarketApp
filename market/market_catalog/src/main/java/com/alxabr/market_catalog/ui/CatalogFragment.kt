@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.alxabr.market_catalog.CatalogViewModel
 import com.alxabr.market_catalog.databinding.CatalogFragmentBinding
+import com.alxabr.market_product_list.ProductListView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,7 +26,14 @@ class CatalogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.productListView.configure(fragment = this)
+        binding.productListView.configure(
+            fragment = this,
+            config = ProductListView.Config(sortType = viewModel.sortType)
+        )
+        binding.productSortSelector.setSelectedSort(sortType = viewModel.sortType.value)
+        binding.productSortSelector.setListener {
+            viewModel.onUiEvent(event = CatalogUiEvent.OnSortChanged(sortType = it))
+        }
     }
 
     override fun onDestroyView() {

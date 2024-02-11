@@ -63,6 +63,6 @@ internal class ProductRepositoryImpl @Inject constructor(
         when (sortType) {
             ProductSortType.BY_POPULAR -> sortedBy { it.feedback.rating }
             ProductSortType.BY_PRICE_DOWN -> sortedByDescending { it.price.priceWithDiscount }
-            ProductSortType.BY_PRICE_TOP -> sortedBy { it.price.priceWithDiscount }
+            ProductSortType.BY_PRICE_UP -> sortedBy { it.price.priceWithDiscount }
         }
 }

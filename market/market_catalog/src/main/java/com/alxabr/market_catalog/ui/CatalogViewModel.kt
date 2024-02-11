@@ -1,4 +1,4 @@
-package com.alxabr.market_catalog
+package com.alxabr.market_catalog.ui
 
 import androidx.lifecycle.ViewModel
 import com.alxabr.market_domain.repository.ProductSortType
@@ -12,5 +12,14 @@ internal class CatalogViewModel @Inject constructor() : ViewModel() {
 
     private val _sortType: MutableStateFlow<ProductSortType> = MutableStateFlow(ProductSortType.BY_POPULAR)
     val sortType: StateFlow<ProductSortType> by ::_sortType
-    val sortTypes: Array<ProductSortType> = ProductSortType.values()
+
+    fun onUiEvent(event: CatalogUiEvent) {
+        when (event) {
+            is CatalogUiEvent.OnSortChanged -> onSortTypeChanged(sortType = event.sortType)
+        }
+    }
+
+    private fun onSortTypeChanged(sortType: ProductSortType) {
+        _sortType.value = sortType
+    }
 }
