@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="market_product_viewer_to_basket">В корзину</string>
+    <string name="market_product_viewer_hide">Скрыть</string>
+    <string name="market_product_viewer_more">Подробнее</string>
+    <string name="market_product_viewer_description">Описание</string>
+    <string name="market_product_viewer_characteristics">Характеристики</string>
+    <string name="market_product_viewer_ingredients">Состав</string>
+
+</resources>
