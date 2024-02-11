@@ -3,4 +3,10 @@
     <string name="product_sort_by_popular">По популярности</string>
     <string name="product_sort_by_price_down">По уменьшению цены</string>
     <string name="product_sort_by_price_up">По возрастанию цены</string>
+
+    <string name="product_tag_all">Смотреть всё</string>
+    <string name="product_tag_face">Лицо</string>
+    <string name="product_tag_body">Тело</string>
+    <string name="product_tag_suntan">Загар</string>
+    <string name="product_tag_mask">Маски</string>
 </resources>

@@ -40,6 +40,7 @@ dependencies {
     implementation project(":market_domain")
     implementation project(":market_common")
     implementation project(":market_product_list")
+    implementation project(":market_product_viewer")
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

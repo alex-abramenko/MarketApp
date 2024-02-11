@@ -29,7 +29,7 @@
             app:layout_constraintTop_toBottomOf="@+id/productImageViewer"
             tools:text="500 Р" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/productPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/productPriceWithDiscount"
             tools:text="300 Р" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/productDiscount"
             style="@style/DiscountStyle"
             android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toTopOf="@+id/productPrice"
             tools:text="500 Р"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/productTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/productPrice"
             tools:text="Это продукт" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/productSubtitle"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/productTitle"
             tools:text="Это очень длинное описание данного продукта, ну прям очень длинное, что аж не влазиет контент, да да да текст екст етпавапвпвпвапвп"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/productRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

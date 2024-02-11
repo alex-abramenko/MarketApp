@@ -47,4 +47,7 @@ project(":market_product_list").projectDir = new File(settingsDir, "$marketDir/m
 
 include("market_catalog")
 project(":market_catalog").projectDir = new File(settingsDir, "$marketDir/market_catalog")
+
+include("market_product_viewer")
+project(":market_product_viewer").projectDir = new File(settingsDir, "$marketDir/market_product_viewer")
 // endregion
