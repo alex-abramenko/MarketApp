@@ -1,12 +1,12 @@
 package com.alxabr.market_common
 
-import com.alxabr.market_domain.model.Product
+import com.alxabr.market_domain.model.ProductPrice
 
-fun Product.buildPriceWithoutDiscount(): String =
-    "${price.priceWithDiscount} ${price.unit}"
+fun ProductPrice.buildPriceWithoutDiscount(): String =
+    "$priceWithDiscount $unit"
 
-fun Product.buildPrice(): String =
-    "${price.price} ${price.unit}"
+fun ProductPrice.buildPrice(): String =
+    "$price $unit"
 
-fun Product.buildDiscount(): String =
-    "-${price.discount}%"
+fun ProductPrice.buildDiscount(): String =
+    "-${discount}%"

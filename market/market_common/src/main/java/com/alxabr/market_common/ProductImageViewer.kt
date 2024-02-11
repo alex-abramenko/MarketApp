@@ -18,6 +18,9 @@ class ProductImageViewer @JvmOverloads constructor(
 
     init {
         setSliderAdapter(adapter)
+        indicatorSelectedColor = context.getColorFromAttr(com.google.android.material.R.attr.colorPrimary)
+        indicatorUnselectedColor = context.getColorFromAttr(com.google.android.material.R.attr.colorControlHighlight)
+        setIndicatorMargin(0)
     }
 
     fun setImages(images: List<Int>) {
@@ -29,6 +32,9 @@ class ProductImageViewer @JvmOverloads constructor(
         private val images: MutableList<Int> = mutableListOf()
 
         fun setImages(images: List<Int>) {
+            if (images == this.images) {
+                return
+            }
             this.images.clear()
             this.images.addAll(images)
             notifyDataSetChanged()
@@ -49,6 +55,7 @@ class ProductImageViewer @JvmOverloads constructor(
 
             fun bind(@DrawableRes drawableRes: Int) {
                 imageView.setImageResource(drawableRes)
+                imageView.scaleType = ImageView.ScaleType.FIT_CENTER
             }
         }
     }

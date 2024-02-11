@@ -1,32 +1,20 @@
 package com.alxabr.market_product_list.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.alxabr.auth_domain.utils.MarketLogger
+import com.alxabr.market_common.base_adapter.BaseAdapter
+import com.alxabr.market_common.base_adapter.BaseViewHolder
 import com.alxabr.market_domain.model.Product
 
-internal class ProductAdapter(
-    private val listener: ProductItemListener
-) : RecyclerView.Adapter<ProductViewHolder>() {
 
-    private val products: MutableList<Product> = mutableListOf()
+internal class ProductAdapter(private val listener: ProductItemListener) : BaseAdapter<Product>() {
 
-    fun setProducts(products: List<Product>) {
-        this.products.clear()
-        this.products.addAll(products)
-        notifyItemRangeChanged(0, products.size)
-    }
+    override fun instanceViewHolder(layoutInflater: LayoutInflater, parent: ViewGroup): BaseViewHolder<Product> =
+        ProductViewHolder.from(layoutInflater = layoutInflater, parent = parent, listener = listener)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder =
-        ProductViewHolder.from(parent = parent, listener = listener)
+    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean =
+        oldItem.id == newItem.id
 
-    override fun getItemCount(): Int =
-        products.size
-
-    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        products
-            .getOrNull(position)
-            ?.let(holder::bind)
-            ?: MarketLogger.error("Product not found in pos $position.")
-    }
+    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean =
+        oldItem == newItem
 }

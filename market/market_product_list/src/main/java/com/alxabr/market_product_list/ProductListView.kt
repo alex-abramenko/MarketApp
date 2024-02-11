@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.alxabr.market_product_list.adapter.ProductAdapter
 import com.alxabr.market_product_list.viewmodel.ProductListViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -50,6 +51,7 @@ class ProductListView  @JvmOverloads constructor(
         )
         clipToPadding = false
         addItemDecoration(itemDecoration)
+        (itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
     }
 
     fun configure(fragment: Fragment): ProductListController =
@@ -59,9 +61,8 @@ class ProductListView  @JvmOverloads constructor(
             .apply {
                 val productAdapter = ProductAdapter(this)
                 adapter = productAdapter
-
                 products
-                    .onEach(productAdapter::setProducts)
+                    .onEach(productAdapter::setItems)
                     .launchIn(fragment.viewLifecycleOwner.lifecycleScope)
             }
 }
