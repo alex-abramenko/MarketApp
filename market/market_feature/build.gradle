@@ -37,8 +37,10 @@ android {
 
 dependencies {
 
-    implementation project(":market_domain")
+    api project(":market_domain")
+    api project(":market_data")
     implementation project(":market_common")
+    api project(":market_catalog")
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

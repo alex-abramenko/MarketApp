@@ -43,10 +43,7 @@ dependencies {
     implementation project(":auth_domain")
     implementation project(":auth_presentation")
 
-    implementation project(":market_domain")
-    implementation project(":market_common")
-    implementation project(":market_data")
-    implementation project(":market_catalog")
+    implementation project(":market_feature")
 
 /*    def nav_version = "2.6.1"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

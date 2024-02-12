@@ -67,14 +67,18 @@ class ProductListView @JvmOverloads constructor(
             .viewModels<ProductListViewModel>()
             .value
             .apply {
+                val viewScope = fragment.viewLifecycleOwner.lifecycleScope
+
                 onConfigure(config = config)
+
                 val productAdapter = ProductAdapter(this)
                 adapter = productAdapter
+
                 products
                     .onEach {
                         productAdapter.setItems(it)
                         invalidateItemDecorations()
                     }
-                    .launchIn(fragment.viewLifecycleOwner.lifecycleScope)
+                    .launchIn(viewScope)
             }
 }
