@@ -57,6 +57,7 @@ class MarketFeatureFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewPager.adapter = SampleFragmentPagerAdapter(fragment = this)
+        binding.viewPager.isUserInputEnabled = false
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             val tabContent = tabContents.getOrNull(position) ?: return@TabLayoutMediator
             tab.text = getString(tabContent.text)
