@@ -33,6 +33,9 @@ project(":auth_presentation").projectDir = new File(settingsDir, "$authDir/auth_
 // region Market
 def marketDir = "market"
 
+include("market_feature")
+project(":market_feature").projectDir = new File(settingsDir, "$marketDir/market_feature")
+
 include("market_domain")
 project(":market_domain").projectDir = new File(settingsDir, "$marketDir/market_domain")
 
