@@ -24,4 +24,13 @@
         <item quantity="many">%1$d отзывов</item>
         <item quantity="other">%1$d отзывов</item>
     </plurals>
+
+    <plurals name="product_available">
+        <item quantity="zero">Закончился</item>
+        <item quantity="one">Доступна для заказа %1$d штука</item>
+        <item quantity="two">Доступно для заказа %1$d штуки</item>
+        <item quantity="few">Доступно для заказа %1$d штуки</item>
+        <item quantity="many">Доступно для заказа %1$d штук</item>
+        <item quantity="other">Доступно для заказа %1$d штук</item>
+    </plurals>
 </resources>

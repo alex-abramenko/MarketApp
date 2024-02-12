@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.alxabr.market_common.buildAvailable
 import com.alxabr.market_common.buildDiscount
 import com.alxabr.market_common.buildFeedbackCountExt
 import com.alxabr.market_common.buildPrice
@@ -82,7 +83,7 @@ class ProductViewerFragment : Fragment() {
             productFavorite.isFavorite = product.isFavorite
             productTitle.text = product.title
             productSubtitle.text = product.subtitle
-            productAvailable.text = product.available.toString()
+            productAvailable.text = product.buildAvailable(resources)
             productRating.rating = product.feedback.rating
             productRatingValue.text = product.feedback.rating.toString()
             productFeedbackCount.text = product.feedback.buildFeedbackCountExt(resources)

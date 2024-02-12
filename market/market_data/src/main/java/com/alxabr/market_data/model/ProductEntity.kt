@@ -15,7 +15,7 @@ internal data class ProductEntity(
     val price: Price,
     val feedback: Feedback,
     val tags: List<String>,
-    val available: Long,
+    val available: Int,
     val description: String,
     val info: List<Info>,
     val ingredients: String,

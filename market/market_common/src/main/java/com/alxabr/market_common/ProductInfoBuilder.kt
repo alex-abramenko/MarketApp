@@ -1,6 +1,7 @@
 package com.alxabr.market_common
 
 import android.content.res.Resources
+import com.alxabr.market_domain.model.Product
 import com.alxabr.market_domain.model.ProductFeedback
 import com.alxabr.market_domain.model.ProductPrice
 
@@ -18,3 +19,6 @@ fun ProductFeedback.buildFeedbackCount(): String =
 
 fun ProductFeedback.buildFeedbackCountExt(resource: Resources): String =
     resource.getQuantityString(R.plurals.product_feedback_count, count, count)
+
+fun Product.buildAvailable(resource: Resources): String =
+    resource.getQuantityString(R.plurals.product_available, available, available)
