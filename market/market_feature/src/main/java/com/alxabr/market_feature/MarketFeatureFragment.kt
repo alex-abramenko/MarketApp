@@ -10,15 +10,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.alxabr.market_catalog.ui.CatalogFragment
-import com.alxabr.market_common.ToolbarDispatcher
 import com.alxabr.market_feature.databinding.MarketFeatureFragmentBinding
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 
-
-class MarketFeatureFragment : Fragment(), ToolbarDispatcher {
+class MarketFeatureFragment : Fragment() {
 
     private val tabContents: List<TabContent> = listOf(
         TabContent(
@@ -51,9 +48,6 @@ class MarketFeatureFragment : Fragment(), ToolbarDispatcher {
     private var _binding: MarketFeatureFragmentBinding? = null
     private val binding: MarketFeatureFragmentBinding
         get() = _binding!!
-
-    override val toolbar: MaterialToolbar
-        get() = binding.toolbar
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         MarketFeatureFragmentBinding
