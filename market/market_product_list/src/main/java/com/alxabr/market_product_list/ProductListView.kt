@@ -60,6 +60,7 @@ class ProductListView @JvmOverloads constructor(
         clipToPadding = false
         addItemDecoration(itemDecoration)
         (itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
+        overScrollMode = OVER_SCROLL_NEVER
     }
 
     fun configure(fragment: Fragment, config: Config): ProductList =
