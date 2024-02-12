@@ -17,19 +17,6 @@ internal class AuthRepositoryImpl @Inject constructor(
 
     private val dispatcher = Dispatchers.IO
 
-    override suspend fun checkAuthorization(): Boolean =
-        withContext(dispatcher) {
-            // Симуляция процесса проверки авторизации
-            delay(2*1000)
-            var isLogin = false
-            try {
-                isLogin = userDao.getUser(userEntityId = CURRENT_USER_ID) != null
-            } catch (ex: Exception) {
-                AuthLogger.error(ex.stackTraceToString())
-            }
-            return@withContext isLogin
-        }
-
     override suspend fun login(user: User): Boolean =
         withContext(dispatcher) {
             // Симуляция процесса авторизации
@@ -42,5 +29,10 @@ internal class AuthRepositoryImpl @Inject constructor(
                 isLogin = false
             }
             return@withContext isLogin
+        }
+
+    override suspend fun getUser(): User? =
+        withContext(dispatcher) {
+            userDao.getUser(userEntityId = CURRENT_USER_ID)?.let { userMapper(it) }
         }
 }

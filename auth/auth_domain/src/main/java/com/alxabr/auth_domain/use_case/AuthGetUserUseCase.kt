@@ -1,11 +1,13 @@
 package com.alxabr.auth_domain.use_case
 
+import com.alxabr.auth_domain.model.User
 import com.alxabr.auth_domain.repository.AuthRepository
 import javax.inject.Inject
 
-class AuthCheckUseCase @Inject constructor(
+class AuthGetUserUseCase @Inject constructor(
     private val authRepository: AuthRepository
 ) {
-    suspend operator fun invoke(): Boolean =
-        authRepository.checkAuthorization()
+
+    suspend operator fun invoke(): User? =
+        authRepository.getUser()
 }

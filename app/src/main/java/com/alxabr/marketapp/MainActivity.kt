@@ -13,7 +13,6 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        private const val AUTH_TAG = "MainActivity.AUTH_TAG"
         private const val MARKET_TAG = "MainActivity.MARKET_TAG"
     }
 
@@ -25,18 +24,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         lifecycleScope.launch {
-            if (authFeature.isNeedAuth()) {
-                if (supportFragmentManager.findFragmentByTag(AUTH_TAG) == null) {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainer, authFeature.createAuthFragment(), AUTH_TAG)
-                        .commitAllowingStateLoss()
-                }
-                authFeature.events.collect(::onAuthEvent)
-            } else {
-                showMarket()
-            }
+            authFeature.events.collect(::onAuthEvent)
         }
+        authFeature.startAuthProcess(fragmentManager = supportFragmentManager, containerId = R.id.fragmentContainer)
     }
 
     private fun onAuthEvent(event: AuthFeature.Event) {

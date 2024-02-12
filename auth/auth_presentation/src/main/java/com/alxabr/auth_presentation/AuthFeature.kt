@@ -1,7 +1,8 @@
 package com.alxabr.auth_presentation
 
 import androidx.activity.ComponentActivity
-import androidx.fragment.app.Fragment
+import androidx.annotation.IdRes
+import androidx.fragment.app.FragmentManager
 import kotlinx.coroutines.flow.Flow
 
 interface AuthFeature {
@@ -16,9 +17,10 @@ interface AuthFeature {
 
     val events: Flow<Event>
 
-    suspend fun isNeedAuth(): Boolean
-
-    fun createAuthFragment(): Fragment
+    fun startAuthProcess(
+        fragmentManager: FragmentManager,
+        @IdRes containerId: Int
+    )
 }
 
 /**

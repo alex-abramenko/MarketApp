@@ -12,4 +12,11 @@ internal class UserMapper @Inject constructor() {
             surname = user.surname,
             number = user.number
         )
+
+    operator fun invoke(userEntity: UserEntity): User =
+        User(
+            name = userEntity.name,
+            surname = userEntity.surname,
+            number = userEntity.number
+        )
 }
