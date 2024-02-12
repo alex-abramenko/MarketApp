@@ -20,7 +20,7 @@ internal class AuthRepositoryImpl @Inject constructor(
     override suspend fun checkAuthorization(): Boolean =
         withContext(dispatcher) {
             // Симуляция процесса проверки авторизации
-            delay(3*1000)
+            delay(2*1000)
             var isLogin = false
             try {
                 isLogin = userDao.getUser(userEntityId = CURRENT_USER_ID) != null
@@ -33,7 +33,7 @@ internal class AuthRepositoryImpl @Inject constructor(
     override suspend fun login(user: User): Boolean =
         withContext(dispatcher) {
             // Симуляция процесса авторизации
-            delay(3*1000)
+            delay(2*1000)
             var isLogin = true
             try {
                 userDao.insertUser(userEntity = userMapper(user))
