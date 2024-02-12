@@ -13,8 +13,8 @@ import com.alxabr.market_catalog.databinding.CatalogFragmentBinding
 import com.alxabr.market_domain.model.Product
 import com.alxabr.market_product_list.ProductList
 import com.alxabr.market_product_list.ProductListView
-import com.alxabr.market_product_viewer.viewer.ProductViewerConfig
-import com.alxabr.market_product_viewer.viewer.ProductViewerFragment
+import com.alxabr.market_product_viewer.ProductViewerConfig
+import com.alxabr.market_product_viewer.ProductViewerFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

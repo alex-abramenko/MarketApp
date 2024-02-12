@@ -1,4 +1,4 @@
-package com.alxabr.market_product_viewer.view
+package com.alxabr.market_product_viewer
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,7 +6,6 @@ import com.alxabr.auth_domain.utils.MarketLogger
 import com.alxabr.market_domain.model.Product
 import com.alxabr.market_domain.use_case.ChangeProductFavStateUseCase
 import com.alxabr.market_domain.use_case.GetProductUseCase
-import com.alxabr.market_product_viewer.viewer.ProductViewerConfig
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject

@@ -6,6 +6,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ProductFeedback(
-    val count: Long,
+    val count: Int,
     @FloatRange(from = 0.0, to = 5.0) val rating: Float
 ): Parcelable

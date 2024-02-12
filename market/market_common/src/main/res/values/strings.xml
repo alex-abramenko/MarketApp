@@ -9,4 +9,19 @@
     <string name="product_tag_body">Тело</string>
     <string name="product_tag_suntan">Загар</string>
     <string name="product_tag_mask">Маски</string>
+
+    <string name="market_feature_main_tab">Главная</string>
+    <string name="market_feature_catalog_tab">Каталог</string>
+    <string name="market_feature_basket_tab">Корзина</string>
+    <string name="market_feature_stock_tab">Акции</string>
+    <string name="market_feature_account_tab">Профиль</string>
+
+    <plurals name="product_feedback_count">
+        <item quantity="zero">Нет отзывов</item>
+        <item quantity="one">%1$d отзыв</item>
+        <item quantity="two">%1$d отзыва</item>
+        <item quantity="few">%1$d отзыва</item>
+        <item quantity="many">%1$d отзывов</item>
+        <item quantity="other">%1$d отзывов</item>
+    </plurals>
 </resources>

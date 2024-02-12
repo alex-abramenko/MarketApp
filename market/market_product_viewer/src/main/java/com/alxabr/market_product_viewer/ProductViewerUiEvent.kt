@@ -1,4 +1,4 @@
-package com.alxabr.market_product_viewer.view
+package com.alxabr.market_product_viewer
 
 internal sealed interface ProductViewerUiEvent {
     object OnFavoriteChanged : ProductViewerUiEvent

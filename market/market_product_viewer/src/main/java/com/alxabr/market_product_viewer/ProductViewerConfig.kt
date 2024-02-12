@@ -1,4 +1,4 @@
-package com.alxabr.market_product_viewer.viewer
+package com.alxabr.market_product_viewer
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -6,11 +6,19 @@
     android:layout_height="match_parent"
     android:background="?android:colorBackground">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleCentered="true"
+        app:title="@string/market_feature_catalog_tab"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <LinearLayout
         android:id="@+id/productSortFilterContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:orientation="horizontal">
 
         <com.alxabr.market_common.ProductSortSelector

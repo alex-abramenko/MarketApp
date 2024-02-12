@@ -76,18 +76,42 @@
             android:layout_marginHorizontal="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/productRating"
+            app:layout_constraintBottom_toTopOf="@+id/productRatingLayout"
             app:layout_constraintTop_toBottomOf="@+id/productTitle"
             tools:text="Это очень длинное описание данного продукта, ну прям очень длинное, что аж не влазиет контент, да да да текст екст етпавапвпвпвапвп"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/productRating"
+        <LinearLayout
+            android:id="@+id/productRatingLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             app:layout_constraintBottom_toTopOf="@+id/productToBasket"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="4.5" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star"
+                tools:ignore="ContentDescription"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/productRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@android:color/holo_orange_dark"
+                tools:text="4.5"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/productFeedbackCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="(5)"/>
+
+        </LinearLayout>
 
         <com.alxabr.market_common.ProductFavoriteView
             android:id="@+id/productFavorite"

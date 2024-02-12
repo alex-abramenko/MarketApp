@@ -1,4 +1,4 @@
-package com.alxabr.market_product_viewer.viewer
+package com.alxabr.market_product_viewer
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.alxabr.market_common.buildDiscount
+import com.alxabr.market_common.buildFeedbackCountExt
 import com.alxabr.market_common.buildPrice
 import com.alxabr.market_common.buildPriceWithoutDiscount
 import com.alxabr.market_domain.model.Product
 import com.alxabr.market_product_viewer.databinding.ProductViewerFragmentBinding
-import com.alxabr.market_product_viewer.view.ProductViewerUiEvent
-import com.alxabr.market_product_viewer.view.ProductViewerViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -84,7 +83,9 @@ class ProductViewerFragment : Fragment() {
             productTitle.text = product.title
             productSubtitle.text = product.subtitle
             productAvailable.text = product.available.toString()
-            productRating.text = product.feedback.rating.toString()
+            productRating.rating = product.feedback.rating
+            productRatingValue.text = product.feedback.rating.toString()
+            productFeedbackCount.text = product.feedback.buildFeedbackCountExt(resources)
             productPrice.text = product.price.buildPrice()
             productPriceWithDiscount.text = product.price.buildPriceWithoutDiscount()
             productDiscount.text = product.price.buildDiscount()

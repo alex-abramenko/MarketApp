@@ -31,7 +31,7 @@ internal data class ProductEntity(
     )
 
     data class Feedback(
-        val count: Long,
+        val count: Int,
         @FloatRange(from = 0.0, to = 5.0) val rating: Float
     )
 
