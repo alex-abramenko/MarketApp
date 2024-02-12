@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.alxabr.market_common.buildAvailable
@@ -45,6 +46,8 @@ class ProductViewerFragment : Fragment() {
     private var _binding: ProductViewerFragmentBinding? = null
     private val binding: ProductViewerFragmentBinding
         get() = _binding!!
+    private val viewScope
+        get() = viewLifecycleOwner.lifecycleScope
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         ProductViewerFragmentBinding
@@ -54,10 +57,30 @@ class ProductViewerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel
             .product
             .onEach(::render)
-            .launchIn(viewLifecycleOwner.lifecycleScope)
+            .launchIn(viewScope)
+
+        viewModel
+            .descHiderState
+            .onEach {
+                binding.productDescHider.setText(
+                    if (it) {
+                        R.string.market_product_viewer_hide
+                    } else {
+                        R.string.market_product_viewer_more
+                    }
+                )
+
+            }
+            .launchIn(viewScope)
+        viewModel
+            .descBlockVisibility
+            .onEach { binding.productDescLayout.isVisible = it }
+            .launchIn(viewScope)
+
         binding.toolbar.setNavigationOnClickListener {
             parentFragmentManager.popBackStack()
         }
@@ -66,6 +89,9 @@ class ProductViewerFragment : Fragment() {
         }
         binding.productFavorite.setOnClickListener {
             viewModel.onUiEvent(ProductViewerUiEvent.OnFavoriteChanged)
+        }
+        binding.productDescHider.setOnClickListener {
+            viewModel.onUiEvent(ProductViewerUiEvent.OnDescHiderClick)
         }
     }
 
@@ -90,9 +116,9 @@ class ProductViewerFragment : Fragment() {
             productPrice.text = product.price.buildPrice()
             productPriceWithDiscount.text = product.price.buildPriceWithoutDiscount()
             productDiscount.text = product.price.buildDiscount()
-            textDesc.text = product.description
             productBrand.text = product.title
             productDescription.text = product.description
+            productInfo.setInfoList(productInfo = product.infoList)
             productIngredients.text = product.ingredients
         }
     }

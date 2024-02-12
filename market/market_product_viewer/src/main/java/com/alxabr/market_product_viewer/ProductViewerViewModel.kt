@@ -29,6 +29,10 @@ internal class ProductViewerViewModel @AssistedInject constructor(
     private val _product: MutableStateFlow<Product?> = MutableStateFlow(null)
     val product: StateFlow<Product?> by ::_product
 
+    private val _descHiderState: MutableStateFlow<Boolean> = MutableStateFlow(true)
+    val descHiderState: StateFlow<Boolean> by ::_descHiderState
+    val descBlockVisibility: StateFlow<Boolean> by ::_descHiderState
+
     init {
         getProductUseCase(productId = config.productId)
             .onEach { _product.value = it }
@@ -39,6 +43,7 @@ internal class ProductViewerViewModel @AssistedInject constructor(
         when (event) {
             ProductViewerUiEvent.OnFavoriteChanged -> onFavoriteChanged()
             ProductViewerUiEvent.OnToBasketClick -> onToBasketClick()
+            ProductViewerUiEvent.OnDescHiderClick -> onDescHiderClick()
         }
     }
 
@@ -53,5 +58,9 @@ internal class ProductViewerViewModel @AssistedInject constructor(
 
     private fun onToBasketClick() {
         // TODO Добавлем в корзину через UseCase
+    }
+
+    private fun onDescHiderClick() {
+        _descHiderState.value = !_descHiderState.value
     }
 }
