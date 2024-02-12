@@ -86,8 +86,6 @@ internal class AuthViewModel @Inject constructor(
     // region InputNumber
     private var _inputNumberValue: MutableStateFlow<String> = MutableStateFlow("")
     val inputNumberValue: StateFlow<String> by ::_inputNumberValue
-    val inputNumberError: StateFlow<Boolean>
-        get() = _inputNameValue.mapState { false /* TODO */ }
     val inputNumberEnabled: StateFlow<Boolean>
         get() = isAuthProcess.mapState { !it }
     // endregion
@@ -98,10 +96,9 @@ internal class AuthViewModel @Inject constructor(
             isAuthProcess.mapState { it.not() }
                 .consider(_inputNameValue.mapState { it.isNotBlank() })
                 .consider(_inputSurnameValue.mapState { it.isNotBlank() })
-                .consider(_inputNumberValue.mapState { it.isNotBlank() })
+                .consider(_inputNumberValue.mapState { it.length == 16 })
                 .consider(inputNameError.mapState { it.not() })
                 .consider(inputSurnameError.mapState { it.not() })
-                .consider(inputNumberError.mapState { it.not() })
     // endregion
 
     // region Events
