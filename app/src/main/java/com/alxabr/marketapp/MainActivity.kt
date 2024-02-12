@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.alxabr.auth_presentation.AuthFeature
-import com.alxabr.market_catalog.ui.CatalogFragment
+import com.alxabr.market_feature.MarketFeatureFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         if (supportFragmentManager.findFragmentByTag(MARKET_TAG) == null) {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragmentContainer, CatalogFragment(), MARKET_TAG)
+                .replace(R.id.fragmentContainer, MarketFeatureFragment(), MARKET_TAG)
                 .commitAllowingStateLoss()
         }
     }
